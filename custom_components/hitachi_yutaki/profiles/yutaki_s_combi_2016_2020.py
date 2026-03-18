@@ -1,4 +1,4 @@
-"""Profile for the Hitachi Yutaki Combi Solar 2016-2020 heat pump."""
+"""Profile for the Hitachi Yutaki S Combi 2016-2020 heat pump."""
 
 from typing import Any
 
@@ -6,7 +6,7 @@ from .yutaki_s_combi import YutakiSCombiProfile
 
 
 class YutakiSCombi20162020Profile(YutakiSCombiProfile):
-    """Profile for the Hitachi Yutaki Combi Solar 2016-2020 heat pump."""
+    """Profile for the Hitachi Yutaki S Combi 2016-2020 heat pump."""
 
     @staticmethod
     def detect(data: dict[str, Any]) -> bool:
