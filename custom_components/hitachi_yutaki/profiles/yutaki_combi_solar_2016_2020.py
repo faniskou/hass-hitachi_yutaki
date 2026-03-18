@@ -5,18 +5,18 @@ from typing import Any
 from .yutaki_s_combi import YutakiSCombiProfile
 
 
-class YutakiCombiSolar20162020Profile(YutakiSCombiProfile):
+class YutakiSCombi20162020Profile(YutakiSCombiProfile):
     """Profile for the Hitachi Yutaki Combi Solar 2016-2020 heat pump."""
 
     @staticmethod
     def detect(data: dict[str, Any]) -> bool:
         """Return True if the profile is detected."""
-        return data.get("unit_model") == "yutaki_combi_solar_2016_2020"
+        return data.get("unit_model") == "yutaki_s_combi_2016_2020"
 
     @property
     def name(self) -> str:
         """Return the human-readable name of the heat pump model."""
-        return "Yutaki Combi Solar 2016-2020"
+        return "Yutaki S Combi 2016-2020"
 
     def get_registers(self) -> list[dict[str, Any]]:
         """Return the list of registers for the heat pump."""
