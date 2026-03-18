@@ -1,1 +1,37 @@
-"""Profile for the Hitachi Yutaki Combi Solar 2016-2020 heat pump.\n\nfrom typing import Any\n\nfrom .yutaki_s_combi import YutakiSCombiProfile\n\n\nclass YutakiCombiSolar20162020Profile(YutakiSCombiProfile):\n    """Profile for the Hitachi Yutaki Combi Solar 2016-2020 heat pump."""\n\n    @staticmethod\n    def detect(data: dict[str, Any]) -> bool:\n        """Return True if the profile is detected."""\n        return data.get("unit_model") == "yutaki_combi_solar_2016_2020"\n\n    @property\n    def name(self) -> str:\n        """Return the human-readable name of the heat pump model."""\n        return "Yutaki Combi Solar 2016-2020"\n\n    def get_registers(self) -> list[dict[str, Any]]:\n        """Return the list of registers for the heat pump."""\n        registers = super().get_registers()\n        overrides = {\n            "dhw_target_temperature": 1066,\n            "dhw_tank_temperature": 1075,\n            "unit_status": 1077,\n            "outdoor_temperature": 1078,\n            "water_inlet_temperature": 1079,\n            "water_outlet_temperature_circuit1": 1080,\n            "circuit1_target_temperature": 1086,\n            "circuit1_room_temperature": 1088,\n        }\n        for register in registers:\n            if register["name"] in overrides:\n                register["address"] = overrides[register["name"]]\n        return registers\n"
+"""Profile for the Hitachi Yutaki Combi Solar 2016-2020 heat pump."""
+
+from typing import Any
+
+from .yutaki_s_combi import YutakiSCombiProfile
+
+
+class YutakiCombiSolar20162020Profile(YutakiSCombiProfile):
+    """Profile for the Hitachi Yutaki Combi Solar 2016-2020 heat pump."""
+
+    @staticmethod
+    def detect(data: dict[str, Any]) -> bool:
+        """Return True if the profile is detected."""
+        return data.get("unit_model") == "yutaki_combi_solar_2016_2020"
+
+    @property
+    def name(self) -> str:
+        """Return the human-readable name of the heat pump model."""
+        return "Yutaki Combi Solar 2016-2020"
+
+    def get_registers(self) -> list[dict[str, Any]]:
+        """Return the list of registers for the heat pump."""
+        registers = super().get_registers()
+        overrides = {
+            "dhw_target_temperature": 1066,
+            "dhw_tank_temperature": 1075,
+            "unit_status": 1077,
+            "outdoor_temperature": 1078,
+            "water_inlet_temperature": 1079,
+            "water_outlet_temperature_circuit1": 1080,
+            "circuit1_target_temperature": 1086,
+            "circuit1_room_temperature": 1088,
+        }
+        for register in registers:
+            if register["name"] in overrides:
+                register["address"] = overrides[register["name"]]
+        return registers
